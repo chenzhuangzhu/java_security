@@ -1,6 +1,7 @@
 package com.timliu.security.message_digest;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 
 import org.apache.commons.codec.binary.Hex;
@@ -9,6 +10,8 @@ import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SHA1Digest;
 import org.bouncycastle.crypto.digests.SHA224Digest;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 
 
@@ -16,7 +19,7 @@ import java.math.BigInteger;
 public class SHATest 
 {
 	public static final String src = "sha test";
-	public static void main(String[] args) 
+	public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException 
 	{
 		jdkSHA1();
 		bcSHA1();
@@ -79,7 +82,7 @@ public class SHATest
 			e.printStackTrace();
 		}		
 	}
-	public static void generateSha256() {
+	public static void generateSha256() throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 
         md.update(src.getBytes("UTF-8")); // Change this to "UTF-16" if needed
